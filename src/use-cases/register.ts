@@ -27,12 +27,12 @@ export class RegisterUseCase {
       throw new UserAlreadyExistsError()
     }
 
-    const passwordHash = await bcryptjs.hash(password, env.HASH_STEPS)
+    const password_hash = await bcryptjs.hash(password, env.HASH_STEPS)
 
     const user = await this.usersRepository.create({
       name,
       email,
-      password: passwordHash,
+      password_hash,
     })
 
     return { user }

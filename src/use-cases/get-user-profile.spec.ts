@@ -16,7 +16,7 @@ describe('Profile User use-case', () => {
     const createdUser = await repository.create({
       name: 'Jonn',
       email: 'email@email.com',
-      password: '123456',
+      password_hash: '123456',
     })
 
     const { user } = await sut.execute({

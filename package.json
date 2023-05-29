@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsup src --out-dir build",
+    "prebuild": "tsc --noEmit",
+    "build": "tsup src --out-dir build ",
     "knex": "node --no-warnings --loader tsx ./node_modules/.bin/knex",
     "lint": "eslint src --ext .ts --fix",
     "start": "node build/server.js",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@prisma/client": "^4.14.1",
     "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.7",
     "dotenv": "16.0.3",
     "fastify": "4.17.0",
     "mysql2": "3.3.1",

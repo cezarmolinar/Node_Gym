@@ -13,7 +13,9 @@ interface AuthenticateUseCaseResponse {
 }
 
 export class AuthenticateUseCase {
-  constructor(private usersRepository: UsersRepositoryInterface) {}
+  constructor(
+    private usersRepository: UsersRepositoryInterface,
+  ) {}
 
   async execute({
     email,
@@ -25,7 +27,7 @@ export class AuthenticateUseCase {
       throw new InvalidCredentialsError()
     }
 
-    const doesPasswordMatches = await bcryptjs.compare(password, user.password)
+    const doesPasswordMatches = await bcryptjs.compare(password, user.password_hash)
 
     if (!doesPasswordMatches) {
       throw new InvalidCredentialsError()
